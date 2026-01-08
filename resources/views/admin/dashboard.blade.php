@@ -4,143 +4,165 @@
 <div id="content" class="app-content">
     <div class="container-fluid">
         {{-- PAGE HEADER --}}
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <div>
-                <h1 class="h3 mb-0 text-gray-800 font-weight-bold">Dashboard</h1>
-                <p class="text-muted mb-0">Analisis data elektronik dan transaksi</p>
+        <div class="row align-items-center mb-4">
+            <div class="col-lg-8">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="rounded-circle bg-primary bg-opacity-10 p-3 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-chart-line text-primary fs-4"></i>
+                    </div>
+                    <div>
+                        <h1 class="h2 mb-1 fw-bold text-dark">Dashboard Analytics</h1>
+                        <p class="text-muted mb-0 d-flex align-items-center gap-2">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>{{ now()->isoFormat('dddd, D MMMM YYYY') }}</span>
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="d-flex align-items-center gap-2">
-                <span class="text-muted small">{{ now()->format('l, d F Y') }}</span>
-                <button class="btn btn-sm btn-primary" onclick="refreshDashboard()">
-                    <i class="fas fa-sync-alt me-1"></i> Refresh
-                </button>
+            <div class="col-lg-4">
+                <div class="d-flex align-items-center justify-content-end gap-2">
+                    <div class="d-flex align-items-center bg-light rounded-pill px-3 py-2">
+                        <i class="fas fa-clock text-primary me-2"></i>
+                        <span class="text-dark fw-medium">{{ now()->format('H:i') }}</span>
+                    </div>
+                    <button class="btn btn-primary rounded-pill px-4" onclick="refreshDashboard()">
+                        <i class="fas fa-sync-alt me-2"></i> Refresh Data
+                    </button>
+                </div>
             </div>
         </div>
 
         {{-- KPI CARDS --}}
         <div class="row mb-4">
             <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    Total Produk
-                                </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                    {{ $totalElektronik }}
-                                </div>
-                                <div class="mt-2">
-                                    <span class="text-success small">
-                                        <i class="fas fa-arrow-up me-1"></i>
-                                        12% dari bulan lalu
+                <div class="card card-hover border-0 shadow-lg h-100" style="border-top: 4px solid #4e73df;">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="text-muted small fw-semibold text-uppercase mb-1">Total Produk</div>
+                                <h2 class="fw-bold text-dark mb-0 display-6">{{ $totalElektronik }}</h2>
+                                <div class="mt-3">
+                                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-pill">
+                                        <i class="fas fa-arrow-up me-1"></i>12% dari bulan lalu
                                     </span>
                                 </div>
                             </div>
-                            <div class="col-auto">
-                                <i class="fas fa-boxes fa-2x text-primary"></i>
+                            <div class="bg-primary bg-opacity-10 p-3 rounded-circle">
+                                <i class="fas fa-boxes fs-2 text-primary"></i>
                             </div>
                         </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 py-3 px-4">
+                        <small class="text-muted">
+                            <i class="fas fa-info-circle me-1"></i>
+                            Total semua produk elektronik
+                        </small>
                     </div>
                 </div>
             </div>
 
             <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-success shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                    Total Pesanan
-                                </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                    {{ $totalPesanan }}
-                                </div>
-                                <div class="mt-2">
-                                    <span class="text-success small">
-                                        <i class="fas fa-arrow-up me-1"></i>
-                                        8% dari bulan lalu
+                <div class="card card-hover border-0 shadow-lg h-100" style="border-top: 4px solid #1cc88a;">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="text-muted small fw-semibold text-uppercase mb-1">Total Pesanan</div>
+                                <h2 class="fw-bold text-dark mb-0 display-6">{{ $totalPesanan }}</h2>
+                                <div class="mt-3">
+                                    <span class="badge bg-success bg-opacity-10 text-success px-3 py-1 rounded-pill">
+                                        <i class="fas fa-arrow-up me-1"></i>8% dari bulan lalu
                                     </span>
                                 </div>
                             </div>
-                            <div class="col-auto">
-                                <i class="fas fa-shopping-cart fa-2x text-success"></i>
+                            <div class="bg-success bg-opacity-10 p-3 rounded-circle">
+                                <i class="fas fa-shopping-cart fs-2 text-success"></i>
                             </div>
                         </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 py-3 px-4">
+                        <small class="text-muted">
+                            <i class="fas fa-info-circle me-1"></i>
+                            Total transaksi yang masuk
+                        </small>
                     </div>
                 </div>
             </div>
 
             <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-info shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                    Pendapatan Bulan Ini
-                                </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                    Rp {{ number_format($pendapatanBulanIni, 0, ',', '.') }}
-                                </div>
-                                <div class="mt-2">
-                                    <span class="text-success small">
-                                        <i class="fas fa-arrow-up me-1"></i>
-                                        15% dari bulan lalu
+                <div class="card card-hover border-0 shadow-lg h-100" style="border-top: 4px solid #36b9cc;">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="text-muted small fw-semibold text-uppercase mb-1">Pendapatan Bulan Ini</div>
+                                <h2 class="fw-bold text-dark mb-0 display-6">Rp {{ number_format($pendapatanBulanIni, 0, ',', '.') }}</h2>
+                                <div class="mt-3">
+                                    <span class="badge bg-info bg-opacity-10 text-info px-3 py-1 rounded-pill">
+                                        <i class="fas fa-arrow-up me-1"></i>15% dari bulan lalu
                                     </span>
                                 </div>
                             </div>
-                            <div class="col-auto">
-                                <i class="fas fa-dollar-sign fa-2x text-info"></i>
+                            <div class="bg-info bg-opacity-10 p-3 rounded-circle">
+                                <i class="fas fa-wallet fs-2 text-info"></i>
                             </div>
                         </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 py-3 px-4">
+                        <small class="text-muted">
+                            <i class="fas fa-info-circle me-1"></i>
+                            Total pendapatan bulan ini
+                        </small>
                     </div>
                 </div>
             </div>
 
             <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-warning shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                    Stok Menipis
-                                </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                    {{ $stokMenipis }}
-                                </div>
-                                <div class="mt-2">
-                                    <span class="text-danger small">
-                                        <i class="fas fa-exclamation-triangle me-1"></i>
-                                        Perlu perhatian
+                <div class="card card-hover border-0 shadow-lg h-100" style="border-top: 4px solid #f6c23e;">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="text-muted small fw-semibold text-uppercase mb-1">Stok Menipis</div>
+                                <h2 class="fw-bold text-dark mb-0 display-6">{{ $stokMenipis }}</h2>
+                                <div class="mt-3">
+                                    <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-1 rounded-pill">
+                                        <i class="fas fa-exclamation-triangle me-1"></i>Perlu perhatian
                                     </span>
                                 </div>
                             </div>
-                            <div class="col-auto">
-                                <i class="fas fa-exclamation-triangle fa-2x text-warning"></i>
+                            <div class="bg-warning bg-opacity-10 p-3 rounded-circle">
+                                <i class="fas fa-exclamation-triangle fs-2 text-warning"></i>
                             </div>
                         </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 py-3 px-4">
+                        <small class="text-muted">
+                            <i class="fas fa-info-circle me-1"></i>
+                            Produk dengan stok kurang dari 10
+                        </small>
                     </div>
                 </div>
             </div>
         </div>
 
         {{-- CHARTS SECTION --}}
-        <div class="row">
+        <div class="row mb-4">
             <!-- Pendapatan Chart -->
-            <div class="col-xl-8 col-lg-7 mb-4">
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Statistik Pendapatan</h6>
+            <div class="col-xl-8 mb-4">
+                <div class="card border-0 shadow-lg h-100">
+                    <div class="card-header bg-transparent border-0 py-4 px-4 d-flex align-items-center justify-content-between">
+                        <div>
+                            <h5 class="mb-1 fw-bold">Statistik Pendapatan</h5>
+                            <p class="text-muted small mb-0">Grafik perkembangan pendapatan</p>
+                        </div>
                         <div class="dropdown">
-                            <select class="form-control form-control-sm" id="periodeChart">
+                            <select class="form-select border-0 bg-light rounded-pill px-4 py-2" id="periodeChart">
                                 <option value="month">Bulan Ini</option>
                                 <option value="year">Tahun Ini</option>
                                 <option value="week">Minggu Ini</option>
                             </select>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div class="chart-area">
+                    <div class="card-body p-4">
+                        <div class="chart-area" style="height: 300px;">
                             <canvas id="pendapatanChart"></canvas>
                         </div>
                     </div>
@@ -148,33 +170,36 @@
             </div>
 
             <!-- Status Pesanan Chart -->
-            <div class="col-xl-4 col-lg-5 mb-4">
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Status Pesanan</h6>
+            <div class="col-xl-4 mb-4">
+                <div class="card border-0 shadow-lg h-100">
+                    <div class="card-header bg-transparent border-0 py-4 px-4">
+                        <h5 class="mb-1 fw-bold">Status Pesanan</h5>
+                        <p class="text-muted small mb-0">Distribusi status pembayaran</p>
                     </div>
-                    <div class="card-body">
-                        <div class="text-center">
-                            <canvas id="statusPesananChart" height="200"></canvas>
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-center mb-4">
+                            <div style="width: 200px; height: 200px;">
+                                <canvas id="statusPesananChart"></canvas>
+                            </div>
                         </div>
-                        <div class="mt-4">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span>
-                                    <span class="dot bg-success"></span> Dibayar
-                                </span>
-                                <span class="font-weight-bold">{{ $statusPesanan['dibayar'] ?? 0 }}</span>
+                        <div class="row g-3">
+                            <div class="col-4">
+                                <div class="text-center p-3 rounded-3 bg-success bg-opacity-10">
+                                    <div class="h4 fw-bold text-success mb-1">{{ $statusPesanan['dibayar'] ?? 0 }}</div>
+                                    <div class="small">Dibayar</div>
+                                </div>
                             </div>
-                            <div class="d-flex justify-content-between mb-2">
-                                <span>
-                                    <span class="dot bg-warning"></span> Menunggu
-                                </span>
-                                <span class="font-weight-bold">{{ $statusPesanan['menunggu'] ?? 0 }}</span>
+                            <div class="col-4">
+                                <div class="text-center p-3 rounded-3 bg-warning bg-opacity-10">
+                                    <div class="h4 fw-bold text-warning mb-1">{{ $statusPesanan['menunggu'] ?? 0 }}</div>
+                                    <div class="small">Menunggu</div>
+                                </div>
                             </div>
-                            <div class="d-flex justify-content-between">
-                                <span>
-                                    <span class="dot bg-danger"></span> Gagal
-                                </span>
-                                <span class="font-weight-bold">{{ $statusPesanan['gagal'] ?? 0 }}</span>
+                            <div class="col-4">
+                                <div class="text-center p-3 rounded-3 bg-danger bg-opacity-10">
+                                    <div class="h4 fw-bold text-danger mb-1">{{ $statusPesanan['gagal'] ?? 0 }}</div>
+                                    <div class="small">Gagal</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -183,62 +208,61 @@
         </div>
 
         {{-- TABLES SECTION --}}
-        <div class="row">
+        <div class="row mb-4">
             <!-- Pesanan Terbaru -->
-            <div class="col-xl-8 col-lg-7 mb-4">
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                        <h6 class="m-0 font-weight-bold text-primary">Pesanan Terbaru</h6>
-                        <a href="{{ route('pesanan') }}" class="btn btn-sm btn-primary">
-                            Lihat Semua <i class="fas fa-arrow-right ms-1"></i>
+            <div class="col-xl-8 mb-4">
+                <div class="card border-0 shadow-lg">
+                    <div class="card-header bg-transparent border-0 py-4 px-4 d-flex align-items-center justify-content-between">
+                        <div>
+                            <h5 class="mb-1 fw-bold">Pesanan Terbaru</h5>
+                            <p class="text-muted small mb-0">5 pesanan terbaru yang masuk</p>
+                        </div>
+                        <a href="{{ route('pesanan') }}" class="btn btn-outline-primary rounded-pill px-4">
+                            Lihat Semua <i class="fas fa-arrow-right ms-2"></i>
                         </a>
                     </div>
-                    <div class="card-body p-0">
-                        <div class="table-responsive">
-                            <table class="table table-hover mb-0">
-                                <thead class="table-light">
+                    <div class="card-body p-4">
+                        <div class="table-responsive rounded-3">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="bg-light">
                                     <tr>
-                                        <th width="50" class="text-center">#</th>
-                                        <th>Produk</th>
-                                        <th width="120">Pemesan</th>
-                                        <th width="80" class="text-center">Jumlah</th>
-                                        <th width="120" class="text-end">Total</th>
-                                        <th width="100" class="text-center">Status</th>
-                                        <th width="120" class="text-center">Tanggal</th>
+                                        <th class="border-0 rounded-start">Produk</th>
+                                        <th class="border-0">Pemesan</th>
+                                        <th class="border-0 text-center">Jumlah</th>
+                                        <th class="border-0 text-end">Total</th>
+                                        <th class="border-0 text-center">Status</th>
+                                        <th class="border-0 text-center rounded-end">Tanggal</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @forelse($pesananTerbaru as $pesanan)
-                                    <tr class="align-middle">
-                                        <td class="text-center">{{ $loop->iteration }}</td>
+                                    <tr class="border-bottom">
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                @if($pesanan->elektronik && $pesanan->elektronik->gambar)
-                                                <img src="{{ asset('storage/' . $pesanan->elektronik->gambar) }}" 
-                                                     class="rounded me-2" width="40" height="40" 
-                                                     alt="{{ $pesanan->elektronik->nama_barang }}">
-                                                @else
-                                                <div class="rounded me-2 bg-light d-flex align-items-center justify-content-center" 
-                                                     style="width: 40px; height: 40px;">
-                                                    <i class="fas fa-box text-muted"></i>
+                                                <div class="position-relative">
+                                                    @if($pesanan->elektronik && $pesanan->elektronik->gambar)
+                                                    <img src="{{ asset('storage/' . $pesanan->elektronik->gambar) }}" 
+                                                         class="rounded-2 me-3" width="45" height="45" 
+                                                         alt="{{ $pesanan->elektronik->nama_barang }}">
+                                                    @else
+                                                    <div class="rounded-2 bg-light d-flex align-items-center justify-content-center me-3" 
+                                                         style="width: 45px; height: 45px;">
+                                                        <i class="fas fa-box text-muted"></i>
+                                                    </div>
+                                                    @endif
                                                 </div>
-                                                @endif
                                                 <div>
-                                                    <div class="fw-medium">{{ $pesanan->elektronik->nama_barang ?? '-' }}</div>
-                                                    <small class="text-muted">
-                                                        {{ Str::limit($pesanan->elektronik->deskripsi ?? '', 30) }}
-                                                    </small>
+                                                    <h6 class="mb-0 fw-medium">{{ Str::limit($pesanan->elektronik->nama_barang ?? '-', 20) }}</h6>
+                                                    <small class="text-muted">{{ Str::limit($pesanan->elektronik->kategori ?? 'Uncategorized', 15) }}</small>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="fw-medium">{{ $pesanan->nama_pemesan }}</div>
-                                            <small class="text-muted">
-                                                {{ Str::limit($pesanan->alamat ?? '', 15) }}
-                                            </small>
+                                            <small class="text-muted">{{ Str::limit($pesanan->email ?? '', 20) }}</small>
                                         </td>
                                         <td class="text-center">
-                                            <span class="badge bg-secondary px-3 py-1">
+                                            <span class="badge bg-dark rounded-pill px-3 py-2">
                                                 {{ $pesanan->jumlah_pesanan }}
                                             </span>
                                         </td>
@@ -253,20 +277,23 @@
                                                     'gagal' => 'danger'
                                                 ][$pesanan->setatus_pembayaran] ?? 'secondary';
                                             @endphp
-                                            <span class="badge bg-{{ $statusClass }} px-3 py-1">
+                                            <span class="badge bg-{{ $statusClass }} rounded-pill px-3 py-2">
                                                 {{ ucfirst($pesanan->setatus_pembayaran) }}
                                             </span>
                                         </td>
                                         <td class="text-center">
-                                            <div>{{ $pesanan->created_at->format('d/m/Y') }}</div>
+                                            <div class="fw-medium">{{ $pesanan->created_at->format('d/m/Y') }}</div>
                                             <small class="text-muted">{{ $pesanan->created_at->format('H:i') }}</small>
                                         </td>
                                     </tr>
                                     @empty
                                     <tr>
-                                        <td colspan="7" class="text-center py-4 text-muted">
-                                            <i class="fas fa-shopping-cart fa-2x mb-3"></i>
-                                            <div>Tidak ada pesanan terbaru</div>
+                                        <td colspan="6" class="text-center py-5">
+                                            <div class="py-4">
+                                                <i class="fas fa-shopping-cart fa-3x text-light mb-3"></i>
+                                                <h5 class="text-muted">Tidak ada pesanan terbaru</h5>
+                                                <p class="text-muted small">Belum ada transaksi yang masuk hari ini</p>
+                                            </div>
                                         </td>
                                     </tr>
                                     @endforelse
@@ -278,49 +305,51 @@
             </div>
 
             <!-- Produk Stok Rendah -->
-            <div class="col-xl-4 col-lg-5 mb-4">
-                <div class="card shadow">
-                    <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                        <h6 class="m-0 font-weight-bold text-warning">Produk Stok Rendah</h6>
-                        <a href="{{ route('elektronik') }}" class="btn btn-sm btn-warning">
-                            <i class="fas fa-box me-1"></i> Kelola
+            <div class="col-xl-4 mb-4">
+                <div class="card border-0 shadow-lg h-100">
+                    <div class="card-header bg-transparent border-0 py-4 px-4 d-flex align-items-center justify-content-between">
+                        <div>
+                            <h5 class="mb-1 fw-bold text-warning">Produk Stok Rendah</h5>
+                            <p class="text-muted small mb-0">Segera lakukan restock</p>
+                        </div>
+                        <a href="{{ route('elektronik') }}" class="btn btn-outline-warning rounded-pill px-4">
+                            <i class="fas fa-box me-2"></i> Kelola
                         </a>
                     </div>
-                    <div class="card-body p-0">
+                    <div class="card-body p-4">
                         <div class="list-group list-group-flush">
                             @forelse($produkStokRendah as $produk)
-                            <a href="{{ route('elektronik', $produk->id) }}" 
-                               class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3 px-4 border-bottom">
+                            <div class="list-group-item border-0 px-0 py-3">
                                 <div class="d-flex align-items-center">
-                                    @if($produk->gambar)
-                                    <img src="{{ asset('storage/' . $produk->gambar) }}" 
-                                         class="rounded me-3" width="50" height="50" 
-                                         alt="{{ $produk->nama_barang }}">
-                                    @else
-                                    <div class="rounded me-3 bg-light d-flex align-items-center justify-content-center" 
-                                         style="width: 50px; height: 50px;">
-                                        <i class="fas fa-box text-muted"></i>
+                                    <div class="position-relative">
+                                        @if($produk->gambar)
+                                        <img src="{{ asset('storage/' . $produk->gambar) }}" 
+                                             class="rounded-2 me-3" width="50" height="50" 
+                                             alt="{{ $produk->nama_barang }}">
+                                        @else
+                                        <div class="rounded-2 bg-light d-flex align-items-center justify-content-center me-3" 
+                                             style="width: 50px; height: 50px;">
+                                            <i class="fas fa-box text-muted"></i>
+                                        </div>
+                                        @endif
                                     </div>
-                                    @endif
-                                    <div>
-                                        <h6 class="mb-1 fw-medium">{{ Str::limit($produk->nama_barang, 20) }}</h6>
-                                        <small class="text-muted">
-                                            Rp {{ number_format($produk->harga, 0, ',', '.') }}
-                                        </small>
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-0 fw-medium">{{ Str::limit($produk->nama_barang, 22) }}</h6>
+                                        <small class="text-muted">Stok: {{ $produk->stok }} unit</small>
+                                    </div>
+                                    <div class="text-end">
+                                        <div class="fw-bold text-danger">Rp {{ number_format($produk->harga, 0, ',', '.') }}</div>
+                                        <small class="text-muted">per unit</small>
                                     </div>
                                 </div>
-                                <div class="text-end">
-                                    <span class="badge bg-danger badge-pill px-3 py-2 mb-1 fs-6">
-                                        {{ $produk->stok }}
-                                    </span>
-                                    <small class="d-block text-muted">Stok tersisa</small>
-                                </div>
-                            </a>
+                            </div>
                             @empty
-                            <div class="text-center py-5 text-muted">
-                                <i class="fas fa-check-circle fa-3x mb-3 text-success"></i>
-                                <p class="mb-0 fw-medium">Semua stok aman</p>
-                                <small>Tidak ada produk dengan stok rendah</small>
+                            <div class="text-center py-5">
+                                <div class="rounded-circle bg-success bg-opacity-10 p-4 d-inline-flex align-items-center justify-content-center mb-3">
+                                    <i class="fas fa-check-circle fa-2x text-success"></i>
+                                </div>
+                                <h5 class="text-success fw-medium">Stok Aman</h5>
+                                <p class="text-muted small">Semua produk memiliki stok yang mencukupi</p>
                             </div>
                             @endforelse
                         </div>
@@ -330,55 +359,56 @@
         </div>
 
         {{-- QUICK STATS --}}
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card shadow">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Ringkasan Hari Ini</h6>
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card border-0 shadow-lg">
+                    <div class="card-header bg-transparent border-0 py-4 px-4">
+                        <h5 class="mb-1 fw-bold">Ringkasan Hari Ini</h5>
+                        <p class="text-muted small mb-0">Statistik performa hari ini</p>
                     </div>
-                    <div class="card-body">
-                        <div class="row text-center">
-                            <div class="col-md-3 mb-3">
-                                <div class="card border-left-primary h-100">
-                                    <div class="card-body">
-                                        <div class="text-primary mb-2">
-                                            <i class="fas fa-shopping-cart fa-2x"></i>
+                    <div class="card-body p-4">
+                        <div class="row g-4">
+                            <div class="col-md-3 col-6">
+                                <div class="card border-0 bg-primary bg-opacity-5 h-100 hover-lift">
+                                    <div class="card-body text-center p-4">
+                                        <div class="rounded-circle bg-primary bg-opacity-10 p-3 d-inline-flex align-items-center justify-content-center mb-3">
+                                            <i class="fas fa-shopping-cart fa-lg text-primary"></i>
                                         </div>
-                                        <h5 class="card-title">{{ $pesananHariIni }}</h5>
-                                        <p class="card-text text-muted">Pesanan Baru</p>
+                                        <h3 class="fw-bold text-dark mb-1">{{ $pesananHariIni }}</h3>
+                                        <p class="text-muted mb-0">Pesanan Baru</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 mb-3">
-                                <div class="card border-left-success h-100">
-                                    <div class="card-body">
-                                        <div class="text-success mb-2">
-                                            <i class="fas fa-money-bill-wave fa-2x"></i>
+                            <div class="col-md-3 col-6">
+                                <div class="card border-0 bg-success bg-opacity-5 h-100 hover-lift">
+                                    <div class="card-body text-center p-4">
+                                        <div class="rounded-circle bg-success bg-opacity-10 p-3 d-inline-flex align-items-center justify-content-center mb-3">
+                                            <i class="fas fa-wallet fa-lg text-success"></i>
                                         </div>
-                                        <h5 class="card-title">Rp {{ number_format($pendapatanHariIni, 0, ',', '.') }}</h5>
-                                        <p class="card-text text-muted">Pendapatan Hari Ini</p>
+                                        <h3 class="fw-bold text-dark mb-1">Rp {{ number_format($pendapatanHariIni, 0, ',', '.') }}</h3>
+                                        <p class="text-muted mb-0">Pendapatan</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 mb-3">
-                                <div class="card border-left-info h-100">
-                                    <div class="card-body">
-                                        <div class="text-info mb-2">
-                                            <i class="fas fa-chart-line fa-2x"></i>
+                            <div class="col-md-3 col-6">
+                                <div class="card border-0 bg-info bg-opacity-5 h-100 hover-lift">
+                                    <div class="card-body text-center p-4">
+                                        <div class="rounded-circle bg-info bg-opacity-10 p-3 d-inline-flex align-items-center justify-content-center mb-3">
+                                            <i class="fas fa-chart-line fa-lg text-info"></i>
                                         </div>
-                                        <h5 class="card-title">{{ $produkTerjualHariIni }}</h5>
-                                        <p class="card-text text-muted">Produk Terjual</p>
+                                        <h3 class="fw-bold text-dark mb-1">{{ $produkTerjualHariIni }}</h3>
+                                        <p class="text-muted mb-0">Produk Terjual</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 mb-3">
-                                <div class="card border-left-warning h-100">
-                                    <div class="card-body">
-                                        <div class="text-warning mb-2">
-                                            <i class="fas fa-plus-circle fa-2x"></i>
+                            <div class="col-md-3 col-6">
+                                <div class="card border-0 bg-warning bg-opacity-5 h-100 hover-lift">
+                                    <div class="card-body text-center p-4">
+                                        <div class="rounded-circle bg-warning bg-opacity-10 p-3 d-inline-flex align-items-center justify-content-center mb-3">
+                                            <i class="fas fa-plus-circle fa-lg text-warning"></i>
                                         </div>
-                                        <h5 class="card-title">{{ $produkBaruHariIni }}</h5>
-                                        <p class="card-text text-muted">Produk Baru</p>
+                                        <h3 class="fw-bold text-dark mb-1">{{ $produkBaruHariIni }}</h3>
+                                        <p class="text-muted mb-0">Produk Baru</p>
                                     </div>
                                 </div>
                             </div>
@@ -389,24 +419,38 @@
         </div>
 
         {{-- RECENT ACTIVITY --}}
-        <div class="row mt-4">
-            <div class="col-lg-12">
-                <div class="card shadow">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Aktivitas Terbaru</h6>
+        @if(isset($aktivitasTerbaru) && count($aktivitasTerbaru) > 0)
+        <div class="row">
+            <div class="col-12">
+                <div class="card border-0 shadow-lg">
+                    <div class="card-header bg-transparent border-0 py-4 px-4">
+                        <h5 class="mb-1 fw-bold">Aktivitas Terbaru</h5>
+                        <p class="text-muted small mb-0">Riwayat aktivitas sistem</p>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body p-4">
                         <div class="timeline">
                             @foreach($aktivitasTerbaru as $aktivitas)
-                            <div class="timeline-item">
-                                <div class="timeline-marker 
-                                    {{ $aktivitas['type'] == 'pesanan' ? 'bg-success' : 
-                                       ($aktivitas['type'] == 'produk' ? 'bg-primary' : 'bg-warning') }}">
+                            <div class="timeline-item d-flex mb-3">
+                                <div class="timeline-marker flex-shrink-0 me-3">
+                                    <div class="rounded-circle p-2 bg-{{ 
+                                        $aktivitas['type'] == 'pesanan' ? 'success' : 
+                                        ($aktivitas['type'] == 'produk' ? 'primary' : 'warning') 
+                                    }}-10 d-flex align-items-center justify-content-center">
+                                        <i class="fas fa-{{
+                                            $aktivitas['type'] == 'pesanan' ? 'shopping-cart' : 
+                                            ($aktivitas['type'] == 'produk' ? 'box' : 'bell')
+                                        }} text-{{ 
+                                            $aktivitas['type'] == 'pesanan' ? 'success' : 
+                                            ($aktivitas['type'] == 'produk' ? 'primary' : 'warning') 
+                                        }}"></i>
+                                    </div>
                                 </div>
-                                <div class="timeline-content">
-                                    <h6 class="font-weight-bold">{{ $aktivitas['title'] }}</h6>
-                                    <p class="text-muted mb-0">{{ $aktivitas['description'] }}</p>
-                                    <small class="text-muted">{{ $aktivitas['time'] }}</small>
+                                <div class="timeline-content flex-grow-1">
+                                    <h6 class="fw-medium mb-1">{{ $aktivitas['title'] }}</h6>
+                                    <p class="text-muted mb-1 small">{{ $aktivitas['description'] }}</p>
+                                    <small class="text-muted">
+                                        <i class="far fa-clock me-1"></i>{{ $aktivitas['time'] }}
+                                    </small>
                                 </div>
                             </div>
                             @endforeach
@@ -415,7 +459,7 @@
                 </div>
             </div>
         </div>
-
+        @endif
     </div>
 </div>
 
@@ -423,67 +467,86 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
-.dot {
-    height: 12px;
-    width: 12px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 8px;
+:root {
+    --primary-color: #4e73df;
+    --success-color: #1cc88a;
+    --info-color: #36b9cc;
+    --warning-color: #f6c23e;
+    --danger-color: #e74a3b;
 }
-.border-left-primary { border-left: 4px solid #4e73df !important; }
-.border-left-success { border-left: 4px solid #1cc88a !important; }
-.border-left-info { border-left: 4px solid #36b9cc !important; }
-.border-left-warning { border-left: 4px solid #f6c23e !important; }
-.timeline {
-    position: relative;
-    padding-left: 40px;
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
 }
+
+.hover-lift:hover {
+    transform: translateY(-3px);
+    transition: transform 0.2s ease;
+}
+
 .timeline-item {
+    border-left: 2px solid #f0f0f0;
+    padding-left: 1.5rem;
     position: relative;
-    margin-bottom: 20px;
 }
+
 .timeline-marker {
     position: absolute;
-    left: -40px;
+    left: -0.75rem;
     top: 0;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #ddd;
+    width: 1.5rem;
+    height: 1.5rem;
 }
+
 .timeline-content {
-    padding-left: 20px;
+    padding-bottom: 1rem;
 }
-.card {
-    border-radius: 8px;
-    border: none;
-}
-.table th {
+
+.table thead th {
     font-weight: 600;
-    color: #495057;
+    color: #6c757d;
     background-color: #f8f9fa;
-    border-bottom: 2px solid #dee2e6;
+    border-bottom: 2px solid #e9ecef;
+    padding: 1rem;
 }
+
+.table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
 .badge {
     font-weight: 500;
-    letter-spacing: 0.5px;
+    padding: 0.5rem 1rem;
 }
-.table-responsive {
-    border-radius: 8px;
+
+.bg-primary-10 { background-color: rgba(78, 115, 223, 0.1); }
+.bg-success-10 { background-color: rgba(28, 200, 138, 0.1); }
+.bg-info-10 { background-color: rgba(54, 185, 204, 0.1); }
+.bg-warning-10 { background-color: rgba(246, 194, 62, 0.1); }
+.bg-danger-10 { background-color: rgba(231, 74, 59, 0.1); }
+
+.rounded-2 { border-radius: 10px; }
+.rounded-3 { border-radius: 15px; }
+
+.shadow-lg {
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08) !important;
 }
-.list-group-item {
-    border-left: none;
-    border-right: none;
-    transition: all 0.2s ease;
+
+.display-6 {
+    font-size: 2.5rem;
+    font-weight: 700;
 }
-.list-group-item:hover {
-    background-color: #f8f9fa;
-}
-.list-group-item:first-child {
-    border-top: none;
-}
-.list-group-item:last-child {
-    border-bottom: none;
+
+@media (max-width: 768px) {
+    .display-6 {
+        font-size: 2rem;
+    }
 }
 </style>
 
@@ -505,47 +568,62 @@ function initializeCharts() {
                 label: 'Pendapatan',
                 data: @json($chartData['values'] ?? []),
                 borderColor: '#4e73df',
-                backgroundColor: 'rgba(78, 115, 223, 0.05)',
-                borderWidth: 2,
+                backgroundColor: 'rgba(78, 115, 223, 0.1)',
+                borderWidth: 3,
                 fill: true,
                 tension: 0.4,
                 pointBackgroundColor: '#4e73df',
                 pointBorderColor: '#fff',
-                pointBorderWidth: 2,
-                pointRadius: 4
+                pointBorderWidth: 3,
+                pointRadius: 5,
+                pointHoverRadius: 7
             }]
         },
         options: {
             maintainAspectRatio: false,
             responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        callback: function(value) {
-                            return 'Rp ' + value.toLocaleString();
-                        }
-                    },
-                    grid: {
-                        drawBorder: false
-                    }
-                },
-                x: {
-                    grid: {
-                        display: false
-                    }
-                }
-            },
             plugins: {
                 legend: {
                     display: false
                 },
                 tooltip: {
-                    mode: 'index',
-                    intersect: false,
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    padding: 12,
+                    titleFont: {
+                        size: 14
+                    },
+                    bodyFont: {
+                        size: 14
+                    },
                     callbacks: {
                         label: function(context) {
-                            return 'Rp ' + context.parsed.y.toLocaleString();
+                            return 'Rp ' + context.parsed.y.toLocaleString('id-ID');
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.05)'
+                    },
+                    ticks: {
+                        callback: function(value) {
+                            return 'Rp ' + value.toLocaleString('id-ID');
+                        },
+                        font: {
+                            size: 11
+                        }
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            size: 11
                         }
                     }
                 }
@@ -565,18 +643,33 @@ function initializeCharts() {
                     {{ $statusPesanan['menunggu'] ?? 0 }},
                     {{ $statusPesanan['gagal'] ?? 0 }}
                 ],
-                backgroundColor: ['#1cc88a', '#f6c23e', '#e74a3b'],
-                hoverBackgroundColor: ['#17a673', '#dda20a', '#d52a1e'],
+                backgroundColor: [
+                    'rgba(28, 200, 138, 0.8)',
+                    'rgba(246, 194, 62, 0.8)',
+                    'rgba(231, 74, 59, 0.8)'
+                ],
+                borderColor: [
+                    'rgba(28, 200, 138, 1)',
+                    'rgba(246, 194, 62, 1)',
+                    'rgba(231, 74, 59, 1)'
+                ],
                 borderWidth: 2,
-                borderColor: '#fff'
+                hoverOffset: 15
             }]
         },
         options: {
             maintainAspectRatio: false,
-            cutout: '70%',
+            cutout: '75%',
             plugins: {
                 legend: {
                     display: false
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    padding: 12,
+                    bodyFont: {
+                        size: 14
+                    }
                 }
             }
         }
@@ -599,20 +692,27 @@ function fetchChartData(periode) {
 
 // Refresh dashboard data
 function refreshDashboard() {
-    const btn = event.target;
+    const btn = event.currentTarget;
     const originalHTML = btn.innerHTML;
     
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i> Loading...';
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Loading...';
     btn.disabled = true;
+    
+    // Add loading animation to cards
+    document.querySelectorAll('.card-hover').forEach(card => {
+        card.classList.add('opacity-75');
+    });
     
     setTimeout(() => {
         location.reload();
-    }, 1000);
+    }, 1500);
 }
 
-// Auto-refresh every 2 minutes (optional)
+// Auto-refresh every 5 minutes (optional)
 setTimeout(() => {
-    location.reload();
-}, 120000);
+    if (confirm('Dashboard akan direfresh secara otomatis. Lanjutkan?')) {
+        location.reload();
+    }
+}, 300000);
 </script>
 @endsection

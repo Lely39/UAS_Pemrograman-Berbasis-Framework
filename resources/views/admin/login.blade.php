@@ -13,7 +13,7 @@
 
     <style>
         body {
-            background: linear-gradient(135deg, #4e73df, #1cc88a);
+            background: linear-gradient(135deg, #4edf75, #1c1fc8);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -45,7 +45,7 @@
         }
 
         .login-icon {
-            color: #4e73df;
+            color: #e90808;
             margin-bottom: 1rem;
             display: block;
         }
@@ -92,11 +92,11 @@
 
         .form-control:focus {
             box-shadow: 0 0 0 0.25rem rgba(78, 115, 223, 0.25);
-            border-color: #4e73df;
+            border-color: #053ada;
         }
 
         .form-control:focus+.input-group-text {
-            border-color: #4e73df;
+            border-color: #0e44e7;
         }
 
         .alert-danger {
